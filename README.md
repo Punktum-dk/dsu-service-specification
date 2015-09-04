@@ -8,7 +8,9 @@ DSU is short for DS Update. DSU is DK Hostmaster's most simple interface for upd
 
 To use DSU, send an SSL-encrypted HTTP POST request to the address:
 
-```https://dsu.dk-hostmaster.dk/1.0```
+```
+https://dsu.dk-hostmaster.dk/1.0
+```
 
 Non-ASCII parameters is first tried interpreted as UTF-8. If this fails, data is assumed to be ISO8859-1.
 
@@ -43,7 +45,7 @@ The domain name which this DS Update pertains. The domain name is transferred pu
 
 The DNSKEY-key's keytag according to RFC4034 section 5.1.1: http://www.apps.ietf.org/rfc/rfc4034.html#sec-5.1.1.
 
-algorithm1 .. algorithm5
+**algorithm1 .. algorithm5**
 
 The DNSKEY-ket's algorithm according to RFC5702 section 2: http://tools.ietf.org/html/rfc5702#section-2.
 
@@ -131,4 +133,3 @@ Response
 
  Unknown userid
  ```
- 
