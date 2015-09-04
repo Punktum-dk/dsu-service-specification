@@ -63,34 +63,35 @@ If you wish to delete all DS-keys for a domain name, all values of set 1 is set 
 
 The reply is transferred primarily as HTTP status codes (http://www.iana.org/assignments/http-status-codes). A text message for human interpretation is also given. Possible status codes are:
 
-200 - The request has been processed without problems.
-400 - The request is invalid and has been rejected.
-405 - The method used, is not allowed.
-500 - An error occurred in DK Hostmaster's systems.
-530 - Access denied.
+- 200 The request has been processed without problems.
+- 400 The request is invalid and has been rejected.
+- 405 The method used, is not allowed.
+- 500 An error occurred in DK Hostmaster's systems.
+- 530 Access denied.
 
 If a 400-error is returned, the HTTP header will contain an additional error-code with the name X-DSU. The value can be one of the following:
 
-480 - Userid not specified.
-481 - Password not specified.
-482 - Missing a parameter.
-483 - Domain name not specified.
-484 - Invalid domain name.
-485 - Invalid userid.
-486 - Invalid digest and digest_type combination.
-487 - The contents of at least one parameter is syntactically wrong.
-488 - At least one DS key has an invalid algorithm.
-489 - Invalid sequence of sets.
-495 - Unknown parameter given.
-496 - Unknown userid.
-497 - Unknown domain name.
+- 480 Userid not specified.
+- 481 Password not specified.
+- 482 Missing a parameter.
+- 483 Domain name not specified.
+- 484 Invalid domain name.
+- 485 Invalid userid.
+- 486 Invalid digest and digest_type combination.
+- 487 The contents of at least one parameter is syntactically wrong.
+- 488 At least one DS key has an invalid algorithm.
+- 489 Invalid sequence of sets.
+- 495 Unknown parameter given.
+- 496 Unknown userid.
+- 497 Unknown domain name.
+
 See Example 2 below.
 
 If a 530-error is returned, the HTTP header will contain an additional error-code with the name X-DSU. The value can be one of the following:
 
-531 - Authentication failed.
-532 - Authorisation failed.
-533 - Authenticating using this password type is not supported.
+- 531 Authentication failed.
+- 532 Authorisation failed.
+- 533 Authenticating using this password type is not supported.
 
 # Example 1
 
