@@ -179,7 +179,7 @@ Response
 <a name="resources"></a>
 # Resources
 
-Resources for DK Hostmaster DSU support is listed below.
+Resources for DK Hostmaster DSU support are listed below.
 
 <a name="mailing-list"></a>
 ## Mailing list
