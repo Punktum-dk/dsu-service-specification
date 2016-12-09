@@ -216,7 +216,7 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
 | 530 | Access denied | Authentication not successful |
 
-If a 400-error is returned, the HTTP header will contain an additional error-code with the name X-DSU. The value can be one of the following:
+If a 400-error is returned, the HTTP header will contain an additional error-code with the name `X-DSU. The value can be one of the following:
 
 | X-DSU Status code | Description |
 |-------------|-------------|
