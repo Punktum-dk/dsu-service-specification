@@ -206,7 +206,7 @@ A [demo client](https://github.com/DK-Hostmaster/dsu-demo-client-mojolicious) is
 <a name="http-status-codes"></a>
 ## HTTP Status Codes
 
-The reply is transferred primarily as HTTP status codes (http://www.iana.org/assignments/http-status-codes). A text message for human interpretation is also given. Possible status codes are:
+The reply is transferred primarily as HTTP status codes (http://www.iana.org/assignments/http-status-codes). A text message for human interpretation is also provided. Possible status codes are:
 
 | HTTP Status code | Message | Description |
 |-------------|---------|-------------|
