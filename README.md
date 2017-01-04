@@ -74,9 +74,9 @@ The service is not subject to any sorts of standards.
 For the parameters defined further down, these rules apply:
 
 An update can contain up to 5 DS keys per domain name.
-If you wish to specify only 1 key, specify only one set, i.e. keytag1, algorithm1, digest_type1 and digest1.
+If you wish to specify only 1 key, specify only one set, i.e. `keytag1`, `algorithm1`, `digest_type1` and `digest1`.
 
-If you wish to specify two keys, an additional set is specified, i.e. keytag2, algorithm2, digest_type2 and digest2. You may continue this way until you reach 5 sets.
+If you wish to specify two keys, an additional set is specified, i.e. `keytag2`, `algorithm2`, `digest_type2` and `digest2`. You may continue this way until you reach the maximum of 5 sets.
 
 The key sets must be specified sequentially starting from 1. E.g. it is not allowed to specify set 1, set 2, set 4 without also specifying set 3.
 
@@ -119,11 +119,11 @@ If you wish to delete all DS-keys for a domain name, all values of set 1 is set 
 
 See Example 2 below.
 
-If a 530-error is returned, the HTTP header will contain an additional error-code with the name X-DSU. The value can be one of the following:
+If a `530` error is returned, the HTTP header will contain an additional error-code with the name `X-DSU`. The value can be one of the following:
 
-- 531 Authentication failed.
-- 532 Authorisation failed.
-- 533 Authenticating using this password type is not supported.
+- `531` Authentication failed.
+- `532` Authorisation failed.
+- `533` Authenticating using this password type is not supported.
 
 <a name="example-1"></a>
 ## Example 1
@@ -217,7 +217,7 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
 | 530 | Access denied | Authentication not successful |
 
-If a 400-error is returned, the HTTP header will contain an additional error-code with the name `X-DSU. The value can be one of the following:
+If a `400` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
 
 | X-DSU Status code | Description |
 |-------------|-------------|
