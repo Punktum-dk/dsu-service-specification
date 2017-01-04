@@ -75,16 +75,16 @@ The service is not subject to any sorts of standards.
 
 The DSU service supports the following algorithms:
 
-- 8 [RFC:5702][RFC5702]
-- 10 [RFC:5702][RFC5702]
-- 13
-- 14
+- 8 RSA/SHA-256 [RFC:5702][RFC5702]
+- 10 RSA/SHA-512 [RFC:5702][RFC5702]
+- 13 ECDSA Curve P-256 with SHA-256 [RFC:6605][RFC6605]
+- 14 ECDSA Curve P-384 with SHA-384 [RFC:6605][RFC6605]
 
 And the following digest types:
 
-- 1
-- 2
-- 4
+- 1 SHA-1 [RFC:4509][RFC4509]
+- 2 SHA-256 [RFC:4509][RFC4509]
+- 4 SHA-384 [RFC:6605][RFC6605]
 
 <a name="adding-ds-keys"></a>
 ## Adding DS-keys
