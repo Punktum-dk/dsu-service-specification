@@ -98,19 +98,19 @@ The domain name which this DS Update pertains. The domain name is transferred pu
 
 **keytag1 .. keytag5**
 
-The DNSKEY-key's keytag according to [RFC:4034][RFC4034] section 5.1.1: http://www.apps.ietf.org/rfc/rfc4034.html#sec-5.1.1.
+The DNSKEY-key's keytag according to [RFC:4034][RFC4034] [section 5.1.1][RFC4034_sec_5_1_1].
 
 **algorithm1 .. algorithm5**
 
-The DNSKEY-key's algorithm according to [RFC:5702][RFC5702] section 2: http://tools.ietf.org/html/rfc5702#section-2.
+The DNSKEY-key's algorithm according to [RFC:5702][RFC5702] [section 2][RFC5702_sec_2].
 
 **digest_type1 .. digest_type5**
 
-The digest method used to generate the DS fingerprint according to [RFC:4034][RFC4034] section 5.1.3: http://www.apps.ietf.org/rfc/rfc4034.html#sec-5.1.3.
+The digest method used to generate the DS fingerprint according to [RFC:4034][RFC4034] [section 5.1.3][RFC4034_sec_5_1_3]
 
 **digest1 .. digest5**
 
-The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] section 2.1 http://www.apps.ietf.org/rfc/rfc4509.html#sec-2.1.
+The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] 
 
 <a name="deleting-ds-keys"></a>
 ## Deleting DS-keys
@@ -235,5 +235,9 @@ If a 400-error is returned, the HTTP header will contain an additional error-cod
 | 497 | Unknown domain name |
 
 [RFC4034]: http://tools.ietf.org/html/rfc4034
+[RFC4034_sec_5_1_1]: https://tools.ietf.org/html/rfc4034#section-5.1.1
+[RFC4034_sec_5_1_3]: https://tools.ietf.org/html/rfc4034#section-5.1.3
 [RFC4509]: http://tools.ietf.org/html/rfc4509
+[RFC4509_sec_2_1]: https://tools.ietf.org/html/rfc4509#section-2.1
 [RFC5702]: http://tools.ietf.org/html/rfc5702
+[RFC5702_sec_2]: https://tools.ietf.org/html/rfc5702#section-2
