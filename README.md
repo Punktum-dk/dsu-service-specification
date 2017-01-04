@@ -52,7 +52,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a name="document-history"></a>
 ## Document History
 
-* 1.2 2016-04-01
+* 1.2 2017-04-01
   * Addressed broken links
   * Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
   * Added information on digest type 4 [RFC:6605][RFC6605]
