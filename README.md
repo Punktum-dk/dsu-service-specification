@@ -194,6 +194,7 @@ Response
 - [RFC:4034][RFC4034]
 - [RFC:4509][RFC4509]
 - [RFC:5702][RFC5702]
+- [RFC:6605][RFC6605]
 - [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
 
 <a name="resources"></a>
