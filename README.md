@@ -52,6 +52,11 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a name="document-history"></a>
 ## Document History
 
+* 1.2 2016-04-01
+  * Addressed broken links
+  * Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
+  * Added information on digest type 4 [RFC:6605][RFC6605] 
+
 * 1.1 2016-06-29
   * Added more information and extended the documentation with license, TOC etc.
 
@@ -67,6 +72,19 @@ The service is not subject to any sorts of standards.
 
 <a name="the-ds-update-service"></a>
 # The DS Update Service
+
+The DSU service supports the following algorithms:
+
+- 8 [RFC:5702][RFC5702]
+- 10 [RFC:5702][RFC5702]
+- 13
+- 14
+
+And the following digest types:
+
+- 1
+- 2
+- 4
 
 <a name="adding-ds-keys"></a>
 ## Adding DS-keys
