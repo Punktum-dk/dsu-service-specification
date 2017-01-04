@@ -102,7 +102,7 @@ The DNSKEY-key's keytag according to [RFC:4034][RFC4034] [section 5.1.1][RFC4034
 
 **algorithm1 .. algorithm5**
 
-The DNSKEY-key's algorithm according to [RFC:5702][RFC5702] [section 2][RFC5702_sec_2].
+The DNSKEY-key's algorithm according to [RFC:5702][RFC5702] [section 2][RFC5702_sec_2] for algorithms 8 and 10 and [RFC:6605][RFC6605] for algorithms 13 and 14.
 
 **digest_type1 .. digest_type5**
 
@@ -110,7 +110,7 @@ The digest method used to generate the DS fingerprint according to [RFC:4034][RF
 
 **digest1 .. digest5**
 
-The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] 
+The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] or [RFC:6605][RFC6605] for digest type 4.
 
 <a name="deleting-ds-keys"></a>
 ## Deleting DS-keys
@@ -242,4 +242,5 @@ If a `400` error is returned, the HTTP header will contain an additional error c
 [RFC4509_sec_2_1]: https://tools.ietf.org/html/rfc4509#section-2.1
 [RFC5702]: http://tools.ietf.org/html/rfc5702
 [RFC5702_sec_2]: https://tools.ietf.org/html/rfc5702#section-2
+[RFC6605]: https://tools.ietf.org/html/rfc6605
 [DKHMDNSSPEC]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
