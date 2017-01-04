@@ -94,7 +94,7 @@ This is the password for the given userid.
 
 **domain**
 
-The domain name which this DS Update pertains. The domain name is transferred punycoded. This means so called æøå-names are written using the xn-- notation, just as in DNS.
+The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
 
 **keytag1 .. keytag5**
 
@@ -175,6 +175,7 @@ Response
 - [RFC:4034][RFC4034]
 - [RFC:4509][RFC4509]
 - [RFC:5702][RFC5702]
+- [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
 
 <a name="resources"></a>
 # Resources
@@ -241,3 +242,4 @@ If a 400-error is returned, the HTTP header will contain an additional error-cod
 [RFC4509_sec_2_1]: https://tools.ietf.org/html/rfc4509#section-2.1
 [RFC5702]: http://tools.ietf.org/html/rfc5702
 [RFC5702_sec_2]: https://tools.ietf.org/html/rfc5702#section-2
+[DKHMDNSSPEC]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
