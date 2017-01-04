@@ -55,7 +55,8 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 * 1.2 2016-04-01
   * Addressed broken links
   * Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
-  * Added information on digest type 4 [RFC:6605][RFC6605] 
+  * Added information on digest type 4 [RFC:6605][RFC6605]
+  * Added list of supported algorithms and digest types 
 
 * 1.1 2016-06-29
   * Added more information and extended the documentation with license, TOC etc.
