@@ -178,6 +178,19 @@ curl -v -F 'userid=ABCD1234-DK' \
 -F 'digest1=DELETE_DS' https://dsu.dk-hostmaster.dk/1.0
 ```
 
+### Using httpie
+
+```bash
+$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
+> userid='ABCD1234-DK' \
+> password='abba4evah' \
+> domain='xn--l-4ga.dk' \
+> keytag1='DELETE_DS' \
+> algorithm1='DELETE_DS' \
+> digest_type1='DELETE_DS' \
+> digest1='DELETE_DS'
+```
+
 <a name="example-2"></a>
 ## Example 2
 
@@ -210,6 +223,19 @@ curl -v -F 'userid=ABCD1234-DK' \
 -F 'algorithm1=7' \
 -F 'digest_type1=1' \
 -F 'digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9' https://dsu.dk-hostmaster.dk/1.0
+```
+
+### Using httpie
+
+```bash
+$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
+> userid='ABCD1234-DK' \
+> password='abba4evah' \
+> domain='xn--l-4ga.dk' \
+> keytag1=1551 \
+> algorithm1=7 \
+> digest_type1=1 \
+> digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 ```
 
 <a name="references"></a>
