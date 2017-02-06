@@ -4,21 +4,21 @@
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
-    - [License](#license)
-    - [Document History](#document-history)
+  - [License](#license)
+  - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [The DS Update Service](#the-ds-update-service)
-    - [Adding DS-keys](#adding-ds-keys)
-    - [Deleting DS-keys](#deleting-ds-keys)
-    - [Example 1](#example-1)
-    - [Example 2](#example-2)
+  - [Adding DS-keys](#adding-ds-keys)
+  - [Deleting DS-keys](#deleting-ds-keys)
+  - [Example 1](#example-1)
+  - [Example 2](#example-2)
 - [References](#references)
 - [Resources](#resources)
-    - [Mailing list](#mailing-list)
-    - [Issue Reporting](#issue-reporting)
-    - [Demo Client](#demo-client)
+  - [Mailing list](#mailing-list)
+  - [Issue Reporting](#issue-reporting)
+  - [Demo Client](#demo-client)
 - [Appendices](#appendices)
-    - [HTTP Status Codes](#http-status-codes)
+  - [HTTP Status Codes](#http-status-codes)
 
 <!-- /MarkdownTOC -->
 
@@ -166,6 +166,18 @@ Response
  OK
 ```
 
+### Using curl
+
+```bash
+curl -v -F 'userid=ABCD1234-DK' \
+-F 'password=abba4evah' \
+-F 'domain=xn--l-4ga.dk' \
+-F 'keytag1=DELETE_DS' \
+-F 'algorithm1=DELETE_DS' \
+-F 'digest_type1=DELETE_DS' \
+-F 'digest1=DELETE_DS' https://dsu.dk-hostmaster.dk/1.0
+```
+
 <a name="example-2"></a>
 ## Example 2
 
@@ -186,6 +198,18 @@ Response
  Content-Type: text/plain
 
  Unknown userid
+```
+
+### Using curl
+
+```bash
+curl -v -F 'userid=ABCD1234-DK' \
+-F 'password=abba4evah' \
+-F 'domain=xn--l-4ga.dk' \
+-F 'keytag1=1551' \
+-F 'algorithm1=7' \
+-F 'digest_type1=1' \
+-F 'digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9' https://dsu.dk-hostmaster.dk/1.0
 ```
 
 <a name="references"></a>
