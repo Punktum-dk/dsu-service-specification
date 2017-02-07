@@ -182,13 +182,13 @@ curl -v -F 'userid=ABCD1234-DK' \
 
 ```bash
 $ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
-> userid='ABCD1234-DK' \
-> password='abba4evah' \
-> domain='xn--l-4ga.dk' \
-> keytag1='DELETE_DS' \
-> algorithm1='DELETE_DS' \
-> digest_type1='DELETE_DS' \
-> digest1='DELETE_DS'
+userid='ABCD1234-DK' \
+password='abba4evah' \
+domain='xn--l-4ga.dk' \
+keytag1='DELETE_DS' \
+algorithm1='DELETE_DS' \
+digest_type1='DELETE_DS' \
+digest1='DELETE_DS'
 ```
 
 <a name="example-2"></a>
@@ -229,13 +229,13 @@ curl -v -F 'userid=ABCD1234-DK' \
 
 ```bash
 $ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
-> userid='ABCD1234-DK' \
-> password='abba4evah' \
-> domain='xn--l-4ga.dk' \
-> keytag1=1551 \
-> algorithm1=7 \
-> digest_type1=1 \
-> digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
+userid='ABCD1234-DK' \
+password='abba4evah' \
+domain='xn--l-4ga.dk' \
+keytag1=1551 \
+algorithm1=7 \
+digest_type1=1 \
+digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 ```
 
 <a name="references"></a>
