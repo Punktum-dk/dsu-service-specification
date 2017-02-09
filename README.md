@@ -9,9 +9,9 @@
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [The DS Update Service](#the-ds-update-service)
   - [Adding DS-keys](#adding-ds-keys)
+  - [Example 2](#example-2)
   - [Deleting DS-keys](#deleting-ds-keys)
   - [Example 1](#example-1)
-  - [Example 2](#example-2)
 - [References](#references)
 - [Resources](#resources)
   - [Mailing list](#mailing-list)
@@ -74,6 +74,20 @@ The service is not subject to any sorts of standards.
 <a name="the-ds-update-service"></a>
 # The DS Update Service
 
+The following parameters are part of the protocol:
+
+### `userid`
+
+This userid must be authorised to operate on the DS keys for the given domain name.
+
+### `password`
+
+This is the password for the given `userid`.
+
+### `domain`
+
+The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
+
 The DSU service supports the following algorithms:
 
 - 8 RSA/SHA-256 [RFC:5702][RFC5702]
@@ -101,20 +115,6 @@ The key sets must be specified sequentially starting from 1. E.g. it is not allo
 
 When a transaction is accepted, all previous DS keys associated with the domain name is deleted. This means that a transaction must contain all DS keys, which is to be associated with the domain name in the future.
 
-The following parameters are part of the protocol:
-
-**userid**
-
-This userid must be authorised to make changes to the DS keys for the given domain name.
-
-**password**
-
-This is the password for the given userid.
-
-**domain**
-
-The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
-
 **keytag1 .. keytag5**
 
 The DNSKEY-key's keytag according to [RFC:4034][RFC4034] [section 5.1.1][RFC4034_sec_5_1_1].
@@ -131,12 +131,58 @@ The digest method used to generate the DS fingerprint according to [RFC:4034][RF
 
 The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] or [RFC:6605][RFC6605] for digest type 4.
 
+<a name="example-2"></a>
+## Example 2
+
+Request (last line has been wrapped to increase the readability)
+
+```
+ POST /1.0 HTTP/1.0
+ Host: dsu.dk-hostmaster.dk
+ Content-Type: application/x-www-form-urlencoded
+ Content-Length: 146
+
+ userid=ABCD1234-DK&password=abba4evah&domain=xn--l-4ga.dk&
+ keytag1=1551&algorithm1=7&digest_type1=1&
+ digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
+Response
+ HTTP/1.0 400 Bad Request
+ X-DSU: 496
+ Content-Type: text/plain
+
+ Unknown userid
+```
+
+### Using curl
+
+```bash
+curl -v -F 'userid=ABCD1234-DK' \
+-F 'password=abba4evah' \
+-F 'domain=xn--l-4ga.dk' \
+-F 'keytag1=1551' \
+-F 'algorithm1=7' \
+-F 'digest_type1=1' \
+-F 'digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9' https://dsu.dk-hostmaster.dk/1.0
+```
+
+### Using httpie
+
+```bash
+$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
+userid='ABCD1234-DK' \
+password='abba4evah' \
+domain='xn--l-4ga.dk' \
+keytag1=1551 \
+algorithm1=7 \
+digest_type1=1 \
+digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
+```
+
+
 <a name="deleting-ds-keys"></a>
 ## Deleting DS-keys
 
 If you wish to delete all DS-keys for a domain name, all values of set 1 is set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
-
-See Example 2 below.
 
 If a `530` error is returned, the HTTP header will contain an additional error-code with the name `X-DSU`. The value can be one of the following:
 
@@ -189,53 +235,6 @@ keytag1='DELETE_DS' \
 algorithm1='DELETE_DS' \
 digest_type1='DELETE_DS' \
 digest1='DELETE_DS'
-```
-
-<a name="example-2"></a>
-## Example 2
-
-Request (last line has been wrapped to increase the readability)
-
-```
- POST /1.0 HTTP/1.0
- Host: dsu.dk-hostmaster.dk
- Content-Type: application/x-www-form-urlencoded
- Content-Length: 146
-
- userid=ABCD1234-DK&password=abba4evah&domain=xn--l-4ga.dk&
- keytag1=1551&algorithm1=7&digest_type1=1&
- digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
-Response
- HTTP/1.0 400 Bad Request
- X-DSU: 496
- Content-Type: text/plain
-
- Unknown userid
-```
-
-### Using curl
-
-```bash
-curl -v -F 'userid=ABCD1234-DK' \
--F 'password=abba4evah' \
--F 'domain=xn--l-4ga.dk' \
--F 'keytag1=1551' \
--F 'algorithm1=7' \
--F 'digest_type1=1' \
--F 'digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9' https://dsu.dk-hostmaster.dk/1.0
-```
-
-### Using httpie
-
-```bash
-$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
-userid='ABCD1234-DK' \
-password='abba4evah' \
-domain='xn--l-4ga.dk' \
-keytag1=1551 \
-algorithm1=7 \
-digest_type1=1 \
-digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 ```
 
 <a name="references"></a>
