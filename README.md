@@ -312,10 +312,10 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | HTTP Status code | Message | Description |
 |-------------|---------|-------------|
 | 200 | OK | The request has been processed without problems |
-| 400 | Bad Request | The request is invalid and has been rejected |
+| 400 | Bad Request | The request is invalid and has been rejected, see sub-status codes 400 segment in the table below |
 | 405 | Method Not Allowed | The method `POST` or `GET`, is not allowed |
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
-| 530 | Access denied | Authentication not successful |
+| 530 | Access denied | Authentication not successful, see sub-status codes 500 segment in the table below |
 
 If a `400` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
 
@@ -334,6 +334,9 @@ If a `400` error is returned, the HTTP header will contain an additional error c
 | 495 | Unknown parameter given |
 | 496 | Unknown userid |
 | 497 | Unknown domain name |
+| 531 | Authentication failed |
+| 532 | Authorisation failed |
+| 533 | Authenticating using this password type is not supported |
 
 [RFC4034]: http://tools.ietf.org/html/rfc4034
 [RFC4034_sec_5_1_1]: https://tools.ietf.org/html/rfc4034#section-5.1.1
