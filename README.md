@@ -22,6 +22,7 @@
   - [Demo Client](#demo-client)
 - [Appendices](#appendices)
   - [HTTP Status Codes](#http-status-codes)
+  - [HTTP Sub-status Codes](#http-sub-status-codes)
 
 <!-- /MarkdownTOC -->
 
@@ -271,10 +272,10 @@ digest1='DELETE_DS'
 <a name="references"></a>
 # References
 
-- [RFC:4034][RFC4034]
-- [RFC:4509][RFC4509]
-- [RFC:5702][RFC5702]
-- [RFC:6605][RFC6605]
+- [RFC:4034: Resource Records for the DNS Security Extensions][RFC4034]
+- [RFC:4509: Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)][RFC4509]
+- [RFC:5702: Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC][RFC5702]
+- [RFC:6605: Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC][RFC6605]
 - [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
 
 <a name="resources"></a>
@@ -317,7 +318,10 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
 | 530 | Access denied | Authentication not successful, see sub-status codes 500 segment in the table below |
 
-If a `400` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
+<a name="http-sub-status-codes"></a>
+## HTTP Sub-status Codes
+
+If a `400` or `530` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
 
 | X-DSU Status code | Description |
 |-------------|-------------|
