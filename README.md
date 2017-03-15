@@ -19,6 +19,7 @@
   - [Demo Client](#demo-client)
 - [Appendices](#appendices)
   - [HTTP Status Codes](#http-status-codes)
+  - [HTTP Sub-status Codes](#http-sub-status-codes)
 
 <!-- /MarkdownTOC -->
 
@@ -287,7 +288,10 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
 | 530 | Access denied | Authentication not successful, see sub-status codes 500 segment in the table below |
 
-If a `400` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
+<a name="http-sub-status-codes"></a>
+## HTTP Sub-status Codes
+
+If a `400` or `530` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
 
 | X-DSU Status code | Description |
 |-------------|-------------|
