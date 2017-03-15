@@ -8,10 +8,13 @@
   - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [The DS Update Service](#the-ds-update-service)
+  - [Encoding](#encoding)
+  - [Security](#security)
+  - [Parameters](#parameters)
   - [Adding DS-keys](#adding-ds-keys)
-  - [Example 2](#example-2)
+  - [Example](#example)
   - [Deleting DS-keys](#deleting-ds-keys)
-  - [Example 1](#example-1)
+  - [Example](#example-1)
 - [References](#references)
 - [Resources](#resources)
   - [Mailing list](#mailing-list)
@@ -25,17 +28,21 @@
 <a name="introduction"></a>
 # Introduction
 
-DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster's as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
+**DSU** is short for *DS Update*. **DSU** is a propriety protocol and service developed and offered by DK Hostmaster's as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
 
 The protocol is based on HTTP og the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
 
-To use DSU, send an SSL-encrypted HTTP POST request to the following address:
+To use **DSU**, send an SSL-encrypted HTTP POST request to the following address:
 
 ```
 https://dsu.dk-hostmaster.dk/1.0
 ```
 
-Non-ASCII parameters is first tried interpreted as UTF-8. If this fails, data is assumed to be ISO8859-1.
+For experimentation and development, DK Hostmaster offers a sandbox at the following address:
+
+```
+https://dsu-sendbox.dk-hostmaster.dk/1.0
+```
 
 <a name="about-this-document"></a>
 # About this Document
@@ -51,6 +58,10 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a name="document-history"></a>
 ## Document History
+
+* 1.3 2017-02-09
+  * Added proces diagrams
+  * Added `httpie` and `curl` examples
 
 * 1.2 2017-04-01
   * Addressed broken links
@@ -73,6 +84,19 @@ The service is not subject to any sorts of standards.
 
 <a name="the-ds-update-service"></a>
 # The DS Update Service
+
+<a name="encoding"></a>
+## Encoding
+
+Non-ASCII parameters is first tried interpreted as UTF-8. If this fails, data are assumed to be ISO8859-1.
+
+<a name="security"></a>
+## Security
+
+
+
+<a name="parameters"></a>
+## Parameters
 
 The following parameters are part of the protocol:
 
@@ -104,6 +128,10 @@ And the following digest types:
 <a name="adding-ds-keys"></a>
 ## Adding DS-keys
 
+Proces:
+
+![Update DSRECORDS Proces](diagrams/update_dsrecords_proces_v1.0.png)
+
 For the parameters defined further down, these rules apply:
 
 An update can contain up to 5 DS keys per domain name.
@@ -131,8 +159,8 @@ The digest method used to generate the DS fingerprint according to [RFC:4034][RF
 
 The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] or [RFC:6605][RFC6605] for digest type 4.
 
-<a name="example-2"></a>
-## Example 2
+<a name="example"></a>
+## Example
 
 Request (last line has been wrapped to increase the readability)
 
@@ -178,9 +206,12 @@ digest_type1=1 \
 digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 ```
 
-
 <a name="deleting-ds-keys"></a>
 ## Deleting DS-keys
+
+Proces:
+
+![Update DSRECORDS Proces](diagrams/delete_dsrecords_proces_v1.0.png)
 
 If you wish to delete all DS-keys for a domain name, all values of set 1 is set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
 
@@ -191,7 +222,7 @@ If a `530` error is returned, the HTTP header will contain an additional error-c
 - `533` Authenticating using this password type is not supported.
 
 <a name="example-1"></a>
-## Example 1
+## Example
 
 Request (last line has been wrapped to increase the readability)
 
