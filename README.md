@@ -241,10 +241,10 @@ digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 <a name="references"></a>
 # References
 
-- [RFC:4034][RFC4034]
-- [RFC:4509][RFC4509]
-- [RFC:5702][RFC5702]
-- [RFC:6605][RFC6605]
+- [RFC:4034: Resource Records for the DNS Security Extensions][RFC4034]
+- [RFC:4509: Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)][RFC4509]
+- [RFC:5702: Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC][RFC5702]
+- [RFC:6605: Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC][RFC6605]
 - [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
 
 <a name="resources"></a>
