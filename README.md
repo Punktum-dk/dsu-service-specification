@@ -26,11 +26,11 @@
 <a name="introduction"></a>
 # Introduction
 
-DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster's as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
+DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
 
-The protocol is based on HTTP og the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
+The protocol is based on HTTP and the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
 
-To use DSU, send an SSL-encrypted HTTP POST request to the following address:
+To use DSU, send a TLS-encrypted HTTP POST request to the following address:
 
 ```
 https://dsu.dk-hostmaster.dk/1.0
@@ -154,53 +154,6 @@ Request (last line has been wrapped to increase the readability)
  POST /1.0 HTTP/1.0
  Host: dsu.dk-hostmaster.dk
  Content-Type: application/x-www-form-urlencoded
- Content-Length: 118
-
- userid=ABCD1234-DK&password=abba4evah&domain=a.dk&
- keytag1=DELETE_DS&algorithm1=DELETE_DS&digest_type1=DELETE_DS
- &digest1=DELETE_DS
-Response
-
- HTTP/1.0 200 OK
- Content-Type: text/plain
-
- OK
-```
-
-### Using curl
-
-```bash
-curl -v -F 'userid=ABCD1234-DK' \
--F 'password=abba4evah' \
--F 'domain=xn--l-4ga.dk' \
--F 'keytag1=DELETE_DS' \
--F 'algorithm1=DELETE_DS' \
--F 'digest_type1=DELETE_DS' \
--F 'digest1=DELETE_DS' https://dsu.dk-hostmaster.dk/1.0
-```
-
-### Using httpie
-
-```bash
-$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
-userid='ABCD1234-DK' \
-password='abba4evah' \
-domain='xn--l-4ga.dk' \
-keytag1='DELETE_DS' \
-algorithm1='DELETE_DS' \
-digest_type1='DELETE_DS' \
-digest1='DELETE_DS'
-```
-
-<a name="example-2"></a>
-## Example 2
-
-Request (last line has been wrapped to increase the readability)
-
-```
- POST /1.0 HTTP/1.0
- Host: dsu.dk-hostmaster.dk
- Content-Type: application/x-www-form-urlencoded
  Content-Length: 146
 
  userid=ABCD1234-DK&password=abba4evah&domain=xn--l-4ga.dk&
@@ -237,6 +190,53 @@ keytag1=1551 \
 algorithm1=7 \
 digest_type1=1 \
 digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
+```
+
+<a name="example-2"></a>
+## Example 2
+
+Request (last line has been wrapped to increase the readability)
+
+```
+ POST /1.0 HTTP/1.0
+ Host: dsu.dk-hostmaster.dk
+ Content-Type: application/x-www-form-urlencoded
+ Content-Length: 118
+
+ userid=ABCD1234-DK&password=abba4evah&domain=a.dk&
+ keytag1=DELETE_DS&algorithm1=DELETE_DS&digest_type1=DELETE_DS
+ &digest1=DELETE_DS
+Response
+
+ HTTP/1.0 200 OK
+ Content-Type: text/plain
+
+ OK
+```
+
+### Using curl
+
+```bash
+curl -v -F 'userid=ABCD1234-DK' \
+-F 'password=abba4evah' \
+-F 'domain=xn--l-4ga.dk' \
+-F 'keytag1=DELETE_DS' \
+-F 'algorithm1=DELETE_DS' \
+-F 'digest_type1=DELETE_DS' \
+-F 'digest1=DELETE_DS' https://dsu.dk-hostmaster.dk/1.0
+```
+
+### Using httpie
+
+```bash
+$ http --form POST https://dsu.dk-hostmaster.dk/1.0 \
+userid='ABCD1234-DK' \
+password='abba4evah' \
+domain='xn--l-4ga.dk' \
+keytag1='DELETE_DS' \
+algorithm1='DELETE_DS' \
+digest_type1='DELETE_DS' \
+digest1='DELETE_DS'
 ```
 
 <a name="references"></a>
