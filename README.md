@@ -29,11 +29,11 @@
 <a name="introduction"></a>
 # Introduction
 
-**DSU** is short for *DS Update*. **DSU** is a propriety protocol and service developed and offered by DK Hostmaster's as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
+DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
 
-The protocol is based on HTTP og the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
+The protocol is based on HTTP and the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
 
-To use **DSU**, send an SSL-encrypted HTTP POST request to the following address:
+To use DSU, send a TLS-encrypted HTTP POST request to the following address:
 
 ```
 https://dsu.dk-hostmaster.dk/1.0
