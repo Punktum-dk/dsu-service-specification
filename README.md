@@ -4,26 +4,32 @@
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
-  - [License](#license)
-  - [Document History](#document-history)
+	- [License](#license)
+	- [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [The DS Update Service](#the-ds-update-service)
-  - [Adding DS-keys](#adding-ds-keys)
-  - [Deleting DS-keys](#deleting-ds-keys)
-  - [Example 1](#example-1)
-  - [Example 2](#example-2)
+	- [Supported Algorithms](#supported-algorithms)
+	- [Supported Digest Types](#supported-digest-types)
+	- [Adding DS-keys](#adding-ds-keys)
+	- [Deleting DS-keys](#deleting-ds-keys)
+	- [Example 1](#example-1)
+		- [Using curl](#using-curl)
+		- [Using httpie](#using-httpie)
+	- [Example 2](#example-2)
+		- [Using curl](#using-curl-1)
+		- [Using httpie](#using-httpie-1)
 - [References](#references)
 - [Resources](#resources)
-  - [Mailing list](#mailing-list)
-  - [Issue Reporting](#issue-reporting)
-  - [Demo Client](#demo-client)
+	- [Mailing list](#mailing-list)
+	- [Issue Reporting](#issue-reporting)
+	- [Demo Client](#demo-client)
 - [Appendices](#appendices)
-  - [HTTP Status Codes](#http-status-codes)
-  - [HTTP Sub-status Codes](#http-sub-status-codes)
+	- [HTTP Status Codes](#http-status-codes)
+	- [HTTP Sub-status Codes](#http-sub-status-codes)
 
 <!-- /MarkdownTOC -->
 
-<a name="introduction"></a>
+<a id="introduction"></a>
 # Introduction
 
 DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
@@ -38,57 +44,65 @@ https://dsu.dk-hostmaster.dk/1.0
 
 Non-ASCII parameters is first tried interpreted as UTF-8. If this fails, data is assumed to be ISO8859-1.
 
-<a name="about-this-document"></a>
+<a id="about-this-document"></a>
 # About this Document
 
 This specification describes protocol version 1.0.
 
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/dsu-service-specification/blob/master/README.md), using the gitprint service.
 
-<a name="license"></a>
+<a id="license"></a>
 ## License
 
 This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
-<a name="document-history"></a>
+<a id="document-history"></a>
 ## Document History
 
 * 1.2 2017-04-01
-  * Addressed broken links
-  * Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
-  * Added information on digest type 4 [RFC:6605][RFC6605]
-  * Added list of supported algorithms and digest types 
+	* Addressed broken links
+	* Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
+	* Added information on digest type 4 [RFC:6605][RFC6605]
+	* Added list of supported algorithms and digest types 
 
 * 1.1 2016-06-29
-  * Added more information and extended the documentation with license, TOC etc.
+	* Added more information and extended the documentation with license, TOC etc.
 
 * 1.0 2015-07-04
-  * Initial revision on Github
+	* Initial revision on Github
 
-<a name="the-dk-registry-in-brief"></a>
+<a id="the-dk-registry-in-brief"></a>
 # The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 
 The service is not subject to any sorts of standards.
 
-<a name="the-ds-update-service"></a>
+<a id="the-ds-update-service"></a>
 # The DS Update Service
 
-The DSU service supports the following algorithms:
+<a id="supported-algorithms"></a>
+## Supported Algorithms
 
+DK Hostmaster currently support the following algorithms from the [IANA algorithm listing][IANA algorithm listing]:
+
+- 3 DSA (DSA/SHA1) [RFC:3110][RFC3110] - _do note that use of this algorithm is not recommended since it is deprecated_
+- 5 RSASHA1 (RSA/SHA-1) [RFC:2539][RFC2539]
+- 6 DSA-NSEC3-SHA1 (DSA-NSEC3-SHA1) [RFC:5155][RFC5155]
+- 7 RSASHA1-NSEC3-SHA1 (RSASHA1-NSEC3-SHA1) [RFC:5155][RFC5155]
 - 8 RSA/SHA-256 [RFC:5702][RFC5702]
 - 10 RSA/SHA-512 [RFC:5702][RFC5702]
 - 13 ECDSA Curve P-256 with SHA-256 [RFC:6605][RFC6605]
 - 14 ECDSA Curve P-384 with SHA-384 [RFC:6605][RFC6605]
 
-And the following digest types:
+<a id="supported-digest-types"></a>
+## Supported Digest Types
 
 - 1 SHA-1 [RFC:4509][RFC4509]
 - 2 SHA-256 [RFC:4509][RFC4509]
 - 4 SHA-384 [RFC:6605][RFC6605]
 
-<a name="adding-ds-keys"></a>
+<a id="adding-ds-keys"></a>
 ## Adding DS-keys
 
 For the parameters defined further down, these rules apply:
@@ -132,7 +146,7 @@ The digest method used to generate the DS fingerprint according to [RFC:4034][RF
 
 The fingerprint digest of the DNSKEY-key according to [RFC:4509][RFC4509] [section 2.1][RFC4509_sec_2_1] or [RFC:6605][RFC6605] for digest type 4.
 
-<a name="deleting-ds-keys"></a>
+<a id="deleting-ds-keys"></a>
 ## Deleting DS-keys
 
 If you wish to delete all DS-keys for a domain name, all values of set 1 is set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
@@ -145,7 +159,7 @@ If a `530` error is returned, the HTTP header will contain an additional error-c
 - `532` Authorisation failed.
 - `533` Authenticating using this password type is not supported.
 
-<a name="example-1"></a>
+<a id="example-1"></a>
 ## Example 1
 
 Request (last line has been wrapped to increase the readability)
@@ -167,6 +181,7 @@ Response
  Unknown userid
 ```
 
+<a id="using-curl"></a>
 ### Using curl
 
 ```bash
@@ -179,6 +194,7 @@ curl -v -F 'userid=ABCD1234-DK' \
 -F 'digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9' https://dsu.dk-hostmaster.dk/1.0
 ```
 
+<a id="using-httpie"></a>
 ### Using httpie
 
 ```bash
@@ -192,7 +208,7 @@ digest_type1=1 \
 digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 ```
 
-<a name="example-2"></a>
+<a id="example-2"></a>
 ## Example 2
 
 Request (last line has been wrapped to increase the readability)
@@ -214,6 +230,7 @@ Response
  OK
 ```
 
+<a id="using-curl-1"></a>
 ### Using curl
 
 ```bash
@@ -226,6 +243,7 @@ curl -v -F 'userid=ABCD1234-DK' \
 -F 'digest1=DELETE_DS' https://dsu.dk-hostmaster.dk/1.0
 ```
 
+<a id="using-httpie-1"></a>
 ### Using httpie
 
 ```bash
@@ -239,7 +257,7 @@ digest_type1='DELETE_DS' \
 digest1='DELETE_DS'
 ```
 
-<a name="references"></a>
+<a id="references"></a>
 # References
 
 - [RFC:4034: Resource Records for the DNS Security Extensions][RFC4034]
@@ -248,34 +266,34 @@ digest1='DELETE_DS'
 - [RFC:6605: Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC][RFC6605]
 - [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
 
-<a name="resources"></a>
+<a id="resources"></a>
 # Resources
 
 Resources for DK Hostmaster DSU support are listed below.
 
-<a name="mailing-list"></a>
+<a id="mailing-list"></a>
 ## Mailing list
 
 DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster DSU service and DNSSEC ingeneral. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
 * `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
-<a name="issue-reporting"></a>
+<a id="issue-reporting"></a>
 ## Issue Reporting
 
 For issue reporting related to this specification, the DSU implementation or sandbox or production environments, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
 
  * `info@dk-hostmaster.dk`
 
-<a name="demo-client"></a>
+<a id="demo-client"></a>
 ## Demo Client
 
 A [demo client](https://github.com/DK-Hostmaster/dsu-demo-client-mojolicious) is available as open source under a MIT license. 
 
-<a name="appendices"></a>
+<a id="appendices"></a>
 # Appendices
 
-<a name="http-status-codes"></a>
+<a id="http-status-codes"></a>
 ## HTTP Status Codes
 
 The reply is transferred primarily as HTTP status codes (http://www.iana.org/assignments/http-status-codes). A text message for human interpretation is also provided. Possible status codes are:
@@ -288,7 +306,7 @@ The reply is transferred primarily as HTTP status codes (http://www.iana.org/ass
 | 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
 | 530 | Access denied | Authentication not successful, see sub-status codes 500 segment in the table below |
 
-<a name="http-sub-status-codes"></a>
+<a id="http-sub-status-codes"></a>
 ## HTTP Sub-status Codes
 
 If a `400` or `530` error is returned, the HTTP header will contain an additional error code with the name `X-DSU`. The value can be one of the following:
@@ -321,3 +339,7 @@ If a `400` or `530` error is returned, the HTTP header will contain an additiona
 [RFC5702_sec_2]: https://tools.ietf.org/html/rfc5702#section-2
 [RFC6605]: https://tools.ietf.org/html/rfc6605
 [DKHMDNSSPEC]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[IANA algorithm listing]: http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
+[RFC3110]: https://tools.ietf.org/html/rfc3110
+[RFC2539]: https://tools.ietf.org/html/rfc2539
+[RFC5155]: https://tools.ietf.org/html/rfc5155
