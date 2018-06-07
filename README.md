@@ -70,9 +70,12 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ## Document History
 
-* 1.3 2017-02-09
+* 1.4 2018-06-07
   * Added proces diagrams
   * Added `httpie` and `curl` examples
+
+* 1.3 2018-06-07
+  * Updated DNSSEC information 
 
 * 1.2 2017-04-01
 	* Addressed broken links
@@ -96,14 +99,11 @@ The service is not subject to any sorts of standards.
 <a id="the-ds-update-service"></a>
 # The DS Update Service
 
-<<<<<<< HEAD
-<a name="encoding"></a>
 <a id="encoding"></a>
 ## Encoding
 
 Non-ASCII parameters is first tried interpreted as UTF-8. If this fails, data are assumed to be ISO8859-1.
 
-<a name="security"></a>
 <a id="security"></a>
 ## Security
 
@@ -129,7 +129,6 @@ The domain name which this DS Update pertains. The domain name is transferred en
 
 <a id="supported-algorithms"></a>
 ## Supported Algorithms
->>>>>>> master
 
 DK Hostmaster currently support the following algorithms from the [IANA algorithm listing][IANA algorithm listing]:
 
