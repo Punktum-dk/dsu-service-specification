@@ -59,6 +59,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ## Document History
 
+* 1.3 2018-06-07
+  * Updated DNSSEC information 
+
 * 1.2 2017-04-01
 	* Addressed broken links
 	* Added information on algorithms 13 and 14 [RFC:6605][RFC6605] 
