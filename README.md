@@ -251,7 +251,6 @@ If a `530` error is returned, the HTTP header will contain an additional error-c
 
 <a id="example-2"></a>
 ## Example 2
->>>>>>> master
 
 Request (last line has been wrapped to increase the readability)
 
