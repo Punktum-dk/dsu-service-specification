@@ -39,7 +39,7 @@
 <a id="introduction"></a>
 # Introduction
 
-DSU is short for DS Update. DSU is a propriety protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name. 
+DSU is short for DS Update. DSU is a proprietary protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name.
 
 The protocol is based on HTTP and the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
 
@@ -125,7 +125,7 @@ This is the password for the given `userid`.
 <a id="domain"></a>
 ### `domain`
 
-The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
+The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing Danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
 
 <a id="supported-algorithms"></a>
 ## Supported Algorithms
@@ -167,7 +167,7 @@ If you wish to specify two keys, an additional set is specified, i.e. `keytag2`,
 
 The key sets must be specified sequentially starting from 1. E.g. it is not allowed to specify set 1, set 2, set 4 without also specifying set 3.
 
-When a transaction is accepted, all previous DS keys associated with the domain name is deleted. This means that a transaction must contain all DS keys, which is to be associated with the domain name in the future.
+When a transaction is accepted, all previous DS keys associated with the domain name are deleted. This means that a transaction must contain all DS keys, which are to be associated with the domain name in the future.
 
 **keytag1 .. keytag5**
 
@@ -241,7 +241,7 @@ Proces:
 
 ![Update DSRECORDS Proces](diagrams/delete_dsrecords_proces_v1.0.png)
 
-If you wish to delete all DS-keys for a domain name, all values of set 1 is set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
+If you wish to delete all DS-keys for a domain name, all values of set 1 must be set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
 
 If a `530` error is returned, the HTTP header will contain an additional error-code with the name `X-DSU`. The value can be one of the following:
 
