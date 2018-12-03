@@ -76,7 +76,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Added information on new consolidated sandbox environment
 
 - 1.4 2018-06-07
-  - Added proces diagrams
+  - Added process diagrams
   - Added `httpie` and `curl` examples
 
 - 1.3 2018-06-07
@@ -188,9 +188,9 @@ DK Hostmaster currently support the following algorithms from the [IANA algorith
 <a id="adding-ds-keys"></a>
 ### Adding DS-keys
 
-Proces:
+Process:
 
-![Update DSRECORDS Proces](diagrams/update_dsrecords_proces_v1.0.png)
+![Update DSRECORDS Process](diagrams/update_dsrecords_proces_v1.0.png)
 
 For the parameters defined further down, these rules apply:
 
@@ -275,9 +275,9 @@ digest1=CD1B87D20EE5EE5F78FCE25336E6519B838F7DC9
 <a id="deleting-ds-keys"></a>
 ### Deleting DS-keys
 
-Proces:
+Process:
 
-![Update DSRECORDS Proces](diagrams/delete_dsrecords_proces_v1.0.png)
+![Update DSRECORDS Process](diagrams/delete_dsrecords_proces_v1.0.png)
 
 If you wish to delete all DS-keys for a domain name, all values of set 1 must be set to the value `DELETE_DS`. No further sets are allowed in the same transaction.
 
