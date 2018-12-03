@@ -5,7 +5,7 @@ Revision: 1.5
 
 ## Table of Contents
 
-<!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " -->
+<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
@@ -13,6 +13,9 @@ Revision: 1.5
   - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [The DS Update Service](#the-ds-update-service)
+  - [Available Environments](#available-environments)
+    - [Production Environment](#production-environment)
+    - [Sandbox Environment](#sandbox-environment)
   - [Encoding](#encoding)
   - [Security](#security)
   - [Parameters](#parameters)
