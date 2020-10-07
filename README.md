@@ -2,7 +2,8 @@
 
 # DSU Service and Protocol 1.0 Specification
 
-![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
+![Markdownlint Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
+![Spellcheck Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 2018-11-29
 Revision: 1.5
