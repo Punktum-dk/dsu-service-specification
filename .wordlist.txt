@@ -42,3 +42,5 @@ urlencoded
 userid
 www
 xn
+DSRECORD
+DSRECORDs

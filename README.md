@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2018-11-29
-Revision: 1.5
+2021-09-02
+Revision: 2.0
 
 ## Table of Contents
 
@@ -65,9 +65,7 @@ To use DSU, send a TLS-encrypted HTTP POST request to the DSU service.
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes protocol version 1.0.
-
-Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/dsu-service-specification/blob/master/README.md), using the gitprint service.
+This specification describes protocol version 1.0 and version 3 (3.X.X) of the DK Hostmaster DSU service.
 
 <a id="license"></a>
 ### License
@@ -76,6 +74,10 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 2.0 2021-09-02
+  - Updated specification to follow service version 3.0.0
+  - Added information on the removal of the concept of DSRECORD ownership introduced with version 3.0.0 of the service
 
 - 1.5 2018-11-29
   - Corrected some spelling and grammatical errors
@@ -127,7 +129,6 @@ For more information on deployed please consult [the wiki](https://github.com/DK
 <a id="production-environment"></a>
 #### Production Environment
 
-- `is_available` requests made to this environment will reflect live production data
 - production credentials and proper authorization are needed to access the service
 
 Production environment is available at: `https://dsu.dk-hostmaster.dk/1.0`
@@ -210,6 +211,8 @@ If you wish to specify two keys, an additional set is specified, i.e. `keytag2`,
 The key sets must be specified sequentially starting from 1. E.g. it is not allowed to specify set 1, set 2, set 4 without also specifying set 3.
 
 When a transaction is accepted, all previous DS keys associated with the domain name are deleted. This means that a transaction must contain all DS keys, which are to be associated with the domain name in the future.
+
+As of version 3.X.X of the service all DSRECORDs that can be deleted are deleted, the concept of ownership of DSRECORDs are removed with this version. A DSRECORDs might not be applicable for deletion, but this will be a very special circumstance.
 
 <a id="keytag1--keytag5"></a>
 #### `keytag1` .. `keytag5`
@@ -294,6 +297,8 @@ If a `530` error is returned, the HTTP header will contain an additional error-c
 - `531` Authentication failed.
 - `532` Authorization failed.
 - `533` Authenticating using this password type is not supported.
+
+As of version 3.X.X of the service all DSRECORDs that can be deleted are deleted, the concept of ownership of DSRECORDs are removed with this version. A DSRECORDs might not be applicable for deletion, but this will be a very special circumstance.
 
 <a id="example-2"></a>
 ### Example 2
