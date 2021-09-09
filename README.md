@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2021-09-02
-Revision: 2.0
+2021-09-09
+Revision: 3.0
 
 ## Table of Contents
 
@@ -74,6 +74,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 3.0 2021-09-09
+  - Relabelled the 2.0 version of the specifcation, so the major version follows the service version number
 
 - 2.0 2021-09-02
   - Updated specification to follow service version 3.0.0
