@@ -76,7 +76,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 3.0 2021-09-09
-  - Relabelled the 2.0 version of the specifcation, so the major version follows the service version number
+  - Relabelled the 2.0 version of the specification, so the major version follows the service version number
 
 - 2.0 2021-09-02
   - Updated specification to follow service version 3.0.0
