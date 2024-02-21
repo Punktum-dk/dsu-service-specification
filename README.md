@@ -1,9 +1,7 @@
-![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
-
 # DSU Service and Protocol 1.0 Specification
 
-![Markdownlint Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
-![Spellcheck Action](https://github.com/DK-Hostmaster/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
+![Markdownlint Action](https://github.com/Punktum-dk/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
+![Spellcheck Action](https://github.com/Punktum-dk/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 2021-09-09
 Revision: 3.0
@@ -56,7 +54,7 @@ Revision: 3.0
 <a id="introduction"></a>
 ## Introduction
 
-DSU is short for DS Update. DSU is a proprietary protocol and service developed and offered by DK Hostmaster as an interface for updating DNSSEC related DS records associated with a .dk domain name.
+DSU is short for DS Update. DSU is a proprietary protocol and service developed and offered by Punktum dk as an interface for updating DNSSEC related DS records associated with a .dk domain name.
 
 The protocol is based on HTTP and the parameters are transferred as POST-variables. The response contains an HTTP header and a brief message for human interpretation. The interface interprets a call as an atomic operation. If errors occur, all changes are rejected and no existing DS records are deleted.
 
@@ -65,12 +63,12 @@ To use DSU, send a TLS-encrypted HTTP POST request to the DSU service.
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes protocol version 1.0 and version 3 (3.X.X) of the DK Hostmaster DSU service.
+This specification describes protocol version 1.0 and version 3 (3.X.X) of the Punktum dk DSU service.
 
 <a id="license"></a>
 ### License
 
-This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
+This document is copyright by Punktum dk A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 <a id="document-history"></a>
 ### Document History
@@ -110,7 +108,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
 
-DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
+Punktum dk is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with Punktum dk maintaining the central DNS registry.
 
 The service is not subject to any sorts of standards.
 
@@ -120,14 +118,14 @@ The service is not subject to any sorts of standards.
 <a id="available-environments"></a>
 ### Available Environments
 
-DK Hostmaster offers the following environments:
+Punktum dk offers the following environments:
 
 | Environment | Role | Policies |
 | ----------- | ---- | ----------- |
-| production  | production | This environment will be the production environment for the DK Hostmaster DSU Service |
-| sandbox     | development | This environment is intended for client development towards the DK Hostmaster DSU Service |
+| production  | production | This environment will be the production environment for the Punktum dk DSU Service |
+| sandbox     | development | This environment is intended for client development towards the Punktum dk DSU Service |
 
-For more information on deployed please consult [the wiki](https://github.com/DK-Hostmaster/dsu-service-specification/wiki).
+For more information on deployed please consult [the wiki](https://github.com/Punktum-dk/dsu-service-specification/wiki).
 
 <a id="production-environment"></a>
 #### Production Environment
@@ -143,7 +141,7 @@ Production environment is available at: `https://dsu.dk-hostmaster.dk/1.0`
 
 Sandbox is available at: `https://dsu-sandbox.dk-hostmaster.dk/1.0`
 
-For more information on the consolidated sandbox environment please see [the specification](https://github.com/DK-Hostmaster/sandbox-environment-specification).
+For more information on the consolidated sandbox environment please see [the specification](https://github.com/Punktum-dk/sandbox-environment-specification).
 
 <a id="encoding"></a>
 ### Encoding
@@ -171,12 +169,12 @@ This is the password for the given `userid`.
 <a id="domain"></a>
 #### `domain`
 
-The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing Danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the DK Hostmaster Name Service specification][DKHMDNSSPEC].
+The domain name which this DS Update pertains. The domain name is transferred encoded using punycode. This means domain name containing Danish letters should be written using the `xn--` notation, just as for DNS. For allowed characters please see [the Punktum dk Name Service specification][DKHMDNSSPEC].
 
 <a id="supported-algorithms"></a>
 ### Supported Algorithms
 
-DK Hostmaster currently support the following algorithms from the [IANA algorithm listing][IANA algorithm listing]:
+Punktum dk currently support the following algorithms from the [IANA algorithm listing][IANA algorithm listing]:
 
 - 3 DSA (DSA/SHA1) [RFC:3110][RFC3110] - _do note that use of this algorithm is not recommended since it is deprecated_
 - 5 RSASHA1 (RSA/SHA-1) [RFC:2539][RFC2539]
@@ -359,29 +357,17 @@ digest1='DELETE_DS'
 - [RFC:4509: Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)][RFC4509]
 - [RFC:5702: Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC][RFC5702]
 - [RFC:6605: Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC][RFC6605]
-- [DK Hostmaster Name Service Specification][DKHMDNSSPEC]
+- [Punktum dk Name Service Specification][DKHMDNSSPEC]
 
 <a id="resources"></a>
 ## Resources
 
-Resources for DK Hostmaster DSU support are listed below.
-
-<a id="mailing-list"></a>
-### Mailing list
-
-DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster DSU service and DNSSEC in general. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
-
-- `tech-discuss+subscribe@liste.dk-hostmaster.dk`
+Resources for Punktum dk DSU support are listed below.
 
 <a id="issue-reporting"></a>
 ### Issue Reporting
 
-For issue reporting related to this specification, the DSU implementation or sandbox or production environments, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise use the regular support channels.
-
-<a id="demo-client"></a>
-### Demo Client
-
-A [demo client](https://github.com/DK-Hostmaster/dsu-demo-client-mojolicious) is available as open source under a MIT license.
+For issue reporting related to this specification, the DSU implementation or sandbox or production environments, please contact us.
 
 <a id="appendices"></a>
 ## Appendices
@@ -396,7 +382,7 @@ The reply is transferred primarily as HTTP status codes. A text message for huma
 | 200 | OK | The request has been processed without problems |
 | 400 | Bad Request | The request is invalid and has been rejected, see sub-status codes 400 segment in the table below |
 | 405 | Method Not Allowed | The method `POST` or `GET`, is not allowed |
-| 500 | Internal Server Error | An error occurred in DK Hostmaster's systems |
+| 500 | Internal Server Error | An error occurred in Punktum dk's systems |
 | 530 | Access denied | Authentication not successful, see sub-status codes 500 segment in the table below |
 
 Reference: [IANA: HTTP Status Codes](http://www.iana.org/assignments/http-status-codes)
@@ -433,7 +419,7 @@ If a `400` or `530` error is returned, the HTTP header will contain an additiona
 [RFC5702]: http://tools.ietf.org/html/rfc5702
 [RFC5702_sec_2]: https://tools.ietf.org/html/rfc5702#section-2
 [RFC6605]: https://tools.ietf.org/html/rfc6605
-[DKHMDNSSPEC]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[DKHMDNSSPEC]: https://github.com/Punktum-dk/dkhm-name-service-specification#domain-names
 [IANA algorithm listing]: http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
 [RFC3110]: https://tools.ietf.org/html/rfc3110
 [RFC2539]: https://tools.ietf.org/html/rfc2539
