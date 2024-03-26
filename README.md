@@ -1,5 +1,7 @@
 # DSU Service and Protocol 1.0 Specification
 
+# *THIS SERVICE WILL BE DECOMMISSIONED ON JULY 1ST, 2024*
+
 ![Markdownlint Action](https://github.com/Punktum-dk/dsu-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/Punktum-dk/dsu-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
